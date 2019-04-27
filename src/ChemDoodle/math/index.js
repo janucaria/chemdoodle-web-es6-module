@@ -2,6 +2,9 @@ import { stringStartsWith } from '../extensions';
 import { jQuery as q } from '../lib';
 import { Point } from '../structures';
 import * as c from '../../ChemDoodle';
+
+export { default as Bounds } from './Bounds';
+
 const m = Math;
 
 var pack = {};
