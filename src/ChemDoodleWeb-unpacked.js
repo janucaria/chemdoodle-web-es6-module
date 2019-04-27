@@ -28,6 +28,7 @@ import * as lib from './ChemDoodle/lib';
 import * as extensions from './ChemDoodle/extensions';
 import * as structures from './ChemDoodle/structures';
 import animations from './ChemDoodle/animations';
+import featureDetection from './ChemDoodle/featureDetection';
 
 // google closure fails if undefined is provided to this module... but it is not needed so whatever...
 export var ChemDoodle = (function() {
@@ -519,53 +520,7 @@ ChemDoodle.math = (function(c, extensions, structures, q, m, undefined) {
 
 })(ChemDoodle.math, Math);
 
-ChemDoodle.featureDetection = (function(iChemLabs, q, document, window, undefined) {
-	'use strict';
-	var features = {};
-
-	features.supports_canvas = function() {
-		return !!document.createElement('canvas').getContext;
-	};
-
-	features.supports_canvas_text = function() {
-		if (!features.supports_canvas()) {
-			return false;
-		}
-		var dummy_canvas = document.createElement('canvas');
-		var context = dummy_canvas.getContext('2d');
-		return typeof context.fillText === 'function';
-	};
-
-	features.supports_webgl = function() {
-		var dummy_canvas = document.createElement('canvas');
-		try {
-			if (dummy_canvas.getContext('webgl')) {
-				return true;
-			}
-			if (dummy_canvas.getContext('experimental-webgl')) {
-				return true;
-			}
-		} catch (b) {
-		}
-		return false;
-	};
-
-	features.supports_xhr2 = function() {
-		return q.support.cors;
-	};
-
-	features.supports_touch = function() {
-		// check the mobile os so we don't interfere with hybrid pcs
-		return 'ontouchstart' in window && !!navigator.userAgent.match(/iPhone|iPad|iPod|Android|BlackBerry|BB10/i);
-	};
-
-	features.supports_gesture = function() {
-		return 'ongesturestart' in window;
-	};
-
-	return features;
-
-})(ChemDoodle.iChemLabs, ChemDoodle.lib.jQuery, document, window);
+ChemDoodle.featureDetection = featureDetection;
 
 // all symbols
 ChemDoodle.SYMBOLS = [ 'H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na', 'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr', 'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb', 'Sr', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn', 'Sb', 'Te', 'I', 'Xe', 'Cs', 'Ba', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu', 'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os', 'Ir', 'Pt', 'Au', 'Hg', 'Tl',
