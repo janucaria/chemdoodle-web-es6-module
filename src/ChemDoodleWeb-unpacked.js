@@ -25,7 +25,7 @@
 //
 
 // google closure fails if undefined is provided to this module... but it is not needed so whatever...
-var ChemDoodle = (function() {
+export var ChemDoodle = (function() {
 	'use strict';
 	var c = {};
 
@@ -29760,5 +29760,6 @@ ChemDoodle.monitor = (function(featureDetection, q, document, undefined) {
 			'value' : location.href
 		}, options, function(content) {}, function(){});
 	};
+
 
 })(ChemDoodle, ChemDoodle.iChemLabs, ChemDoodle.io, ChemDoodle.structures, ChemDoodle.lib.jQuery, location);
