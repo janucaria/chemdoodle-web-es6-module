@@ -29,30 +29,18 @@ import * as extensions from './ChemDoodle/extensions';
 import * as structures from './ChemDoodle/structures';
 import animations from './ChemDoodle/animations';
 import featureDetection from './ChemDoodle/featureDetection';
+import * as ChemDoodleWeb from './ChemDoodle';
 
-// google closure fails if undefined is provided to this module... but it is not needed so whatever...
-export var ChemDoodle = (function() {
-	'use strict';
-	var c = {};
+export var ChemDoodle = ChemDoodleWeb;
 
-	c.iChemLabs = {};
-	c.informatics = {};
-	c.io = {};
-	c.lib = lib;
-	c.notations = {};
-	c.structures = structures;
-	c.structures.d2 = {};
-	c.structures.d3 = {};
-
-	var VERSION = '8.0.0';
-
-	c.getVersion = function() {
-		return VERSION;
-	};
-
-	return c;
-
-})();
+ChemDoodle.iChemLabs = {};
+ChemDoodle.informatics = {};
+ChemDoodle.io = {};
+ChemDoodle.lib = lib;
+ChemDoodle.notations = {};
+ChemDoodle.structures = structures;
+ChemDoodle.structures.d2 = {};
+ChemDoodle.structures.d3 = {};
 
 ChemDoodle.animations = animations;
 
