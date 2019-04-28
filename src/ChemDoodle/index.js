@@ -1,3 +1,5 @@
+const m = Math;
+
 const VERSION = '8.0.0';
 
 export function getVersion() {
@@ -200,3 +202,205 @@ export const RESIDUE = (function(undefined) {
 	return R;
 
 })();
+
+// default canvas properties
+export const default_backgroundColor = '#FFFFFF';
+export const default_scale = 1;
+export const default_rotateAngle = 0;
+export const default_bondLength_2D = 20;
+export const default_angstromsPerBondLength = 1.25;
+export const default_lightDirection_3D = [ -.1, -.1, -1 ];
+export const default_lightDiffuseColor_3D = '#FFFFFF';
+export const default_lightSpecularColor_3D = '#FFFFFF';
+export const default_projectionPerspective_3D = true;
+export const default_projectionPerspectiveVerticalFieldOfView_3D = 45;
+export const default_projectionOrthoWidth_3D = 40;
+export const default_projectionWidthHeightRatio_3D = undefined;
+export const default_projectionFrontCulling_3D = .1;
+export const default_projectionBackCulling_3D = 10000;
+export const default_cullBackFace_3D = true;
+export const default_fog_mode_3D = 0;
+export const default_fog_color_3D = '#000000';
+export const default_fog_start_3D = 0;
+export const default_fog_end_3D = 1;
+export const default_fog_density_3D = 1;
+export const default_shadow_3D = false;
+export const default_shadow_intensity_3D = .85;
+export const default_flat_color_3D = false;
+export const default_antialias_3D = true;
+export const default_gammaCorrection_3D = 2.2;
+export const default_colorHover = '#885110';
+export const default_colorSelect = '#0060B2';
+export const default_colorError = '#c10000';
+export const default_colorPreview = '#00FF00';
+
+// 3D shaders
+// default ssao
+export const default_ssao_3D = false;
+export const default_ssao_kernel_radius = 17;
+export const default_ssao_kernel_samples = 32;
+export const default_ssao_power = 1.0;
+// default outline 3D
+export const default_outline_3D = false;
+export const default_outline_thickness = 1.0;
+export const default_outline_normal_threshold = 0.85;
+export const default_outline_depth_threshold = 0.1;
+// defult fxaa antialiasing
+export const default_fxaa_edgeThreshold = 1.0/16.0;
+export const default_fxaa_edgeThresholdMin = 1.0/12.0;
+export const default_fxaa_searchSteps = 64;
+export const default_fxaa_searchThreshold = 1.0/4.0;
+export const default_fxaa_subpixCap = 1.0;
+export const default_fxaa_subpixTrim = 0.0;
+
+// default atom properties
+export const default_atoms_display = true;
+export const default_atoms_color = '#000000';
+export const default_atoms_font_size_2D = 12;
+export const default_atoms_font_families_2D = [ 'Helvetica', 'Arial', 'Dialog' ];
+export const default_atoms_font_bold_2D = false;
+export const default_atoms_font_italic_2D = false;
+export const default_atoms_circles_2D = false;
+export const default_atoms_circleDiameter_2D = 10;
+export const default_atoms_circleBorderWidth_2D = 1;
+export const default_atoms_lonePairDistance_2D = 8;
+export const default_atoms_lonePairSpread_2D = 4;
+export const default_atoms_lonePairDiameter_2D = 1;
+export const default_atoms_useJMOLColors = false;
+export const default_atoms_usePYMOLColors = false;
+export const default_atoms_HBlack_2D = true;
+export const default_atoms_implicitHydrogens_2D = true;
+export const default_atoms_displayTerminalCarbonLabels_2D = false;
+export const default_atoms_showHiddenCarbons_2D = true;
+export const default_atoms_showAttributedCarbons_2D = true;
+export const default_atoms_displayAllCarbonLabels_2D = false;
+export const default_atoms_resolution_3D = 30;
+export const default_atoms_sphereDiameter_3D = .8;
+export const default_atoms_useVDWDiameters_3D = false;
+export const default_atoms_vdwMultiplier_3D = 1;
+export const default_atoms_materialAmbientColor_3D = '#000000';
+export const default_atoms_materialSpecularColor_3D = '#555555';
+export const default_atoms_materialShininess_3D = 32;
+export const default_atoms_nonBondedAsStars_3D = false;
+export const default_atoms_displayLabels_3D = false;
+
+// default bond properties
+export const default_bonds_display = true;
+export const default_bonds_color = '#000000';
+export const default_bonds_width_2D = 1;
+export const default_bonds_useAbsoluteSaturationWidths_2D = true;
+export const default_bonds_saturationWidth_2D = .2;
+export const default_bonds_saturationWidthAbs_2D = 5;
+export const default_bonds_ends_2D = 'round';
+export const default_bonds_splitColor = false;
+export const default_bonds_colorGradient = false;
+export const default_bonds_saturationAngle_2D = m.PI / 3;
+export const default_bonds_symmetrical_2D = false;
+export const default_bonds_clearOverlaps_2D = false;
+export const default_bonds_overlapClearWidth_2D = .5;
+export const default_bonds_atomLabelBuffer_2D = 1;
+export const default_bonds_wedgeThickness_2D = 6;
+export const default_bonds_wavyLength_2D = 4;
+export const default_bonds_hashWidth_2D = 1;
+export const default_bonds_hashSpacing_2D = 2.5;
+export const default_bonds_dotSize_2D = 2;
+export const default_bonds_lewisStyle_2D = false;
+export const default_bonds_showBondOrders_3D = false;
+export const default_bonds_resolution_3D = 30;
+export const default_bonds_renderAsLines_3D = false;
+export const default_bonds_cylinderDiameter_3D = .3;
+export const default_bonds_pillLatitudeResolution_3D = 10;
+export const default_bonds_pillLongitudeResolution_3D = 20;
+export const default_bonds_pillHeight_3D = .3;
+export const default_bonds_pillSpacing_3D = .1;
+export const default_bonds_pillDiameter_3D = .3;
+export const default_bonds_materialAmbientColor_3D = '#000000';
+export const default_bonds_materialSpecularColor_3D = '#555555';
+export const default_bonds_materialShininess_3D = 32;
+
+// default macromolecular properties
+export const default_proteins_displayRibbon = true;
+export const default_proteins_displayBackbone = false;
+export const default_proteins_backboneThickness = 1.5;
+export const default_proteins_backboneColor = '#CCCCCC';
+export const default_proteins_ribbonCartoonize = false;
+export const default_proteins_displayPipePlank = false;
+// shapely, amino, polarity, rainbow, acidity
+export const default_proteins_residueColor = 'none';
+export const default_proteins_primaryColor = '#FF0D0D';
+export const default_proteins_secondaryColor = '#FFFF30';
+export const default_proteins_ribbonCartoonHelixPrimaryColor = '#00E740';
+export const default_proteins_ribbonCartoonHelixSecondaryColor = '#9905FF';
+export const default_proteins_ribbonCartoonSheetColor = '#E8BB99';
+export const default_proteins_tubeColor = '#FF0D0D';
+export const default_proteins_tubeResolution_3D = 15;
+export const default_proteins_ribbonThickness = .2;
+export const default_proteins_tubeThickness = 0.5;
+export const default_proteins_plankSheetWidth = 3.5;
+export const default_proteins_cylinderHelixDiameter = 4;
+export const default_proteins_verticalResolution = 8;
+export const default_proteins_horizontalResolution = 8;
+export const default_proteins_materialAmbientColor_3D = '#000000';
+export const default_proteins_materialSpecularColor_3D = '#555555';
+export const default_proteins_materialShininess_3D = 32;
+export const default_nucleics_display = true;
+export const default_nucleics_tubeColor = '#CCCCCC';
+export const default_nucleics_baseColor = '#C10000';
+// shapely, rainbow
+export const default_nucleics_residueColor = 'none';
+export const default_nucleics_tubeThickness = 1.5;
+export const default_nucleics_tubeResolution_3D = 15;
+export const default_nucleics_verticalResolution = 8;
+export const default_nucleics_materialAmbientColor_3D = '#000000';
+export const default_nucleics_materialSpecularColor_3D = '#555555';
+export const default_nucleics_materialShininess_3D = 32;
+export const default_macro_displayAtoms = false;
+export const default_macro_displayBonds = false;
+export const default_macro_atomToLigandDistance = -1;
+export const default_macro_showWater = false;
+export const default_macro_colorByChain = false;
+export const default_macro_rainbowColors = ['#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#FF0000'];
+
+// default surface properties
+export const default_surfaces_display = true;
+export const default_surfaces_alpha = .5;
+export const default_surfaces_style = 'Solid';
+export const default_surfaces_color = 'white';
+export const default_surfaces_materialAmbientColor_3D = '#000000';
+export const default_surfaces_materialSpecularColor_3D = '#000000';
+export const default_surfaces_materialShininess_3D = 32;
+
+// default spectrum properties
+export const default_plots_color = '#000000';
+export const default_plots_width = 1;
+export const default_plots_showIntegration = false;
+export const default_plots_integrationColor = '#c10000';
+export const default_plots_integrationLineWidth = 1;
+export const default_plots_showGrid = false;
+export const default_plots_gridColor = 'gray';
+export const default_plots_gridLineWidth = .5;
+export const default_plots_showYAxis = true;
+export const default_plots_flipXAxis = false;
+
+// default shape properties
+export const default_text_font_size = 12;
+export const default_text_font_families = [ 'Helvetica', 'Arial', 'Dialog' ];
+export const default_text_font_bold = true;
+export const default_text_font_italic = false;
+export const default_text_font_stroke_3D = true;
+export const default_text_color = '#000000';
+export const default_shapes_color = '#000000';
+export const default_shapes_lineWidth = 1;
+export const default_shapes_pointSize = 2;
+export const default_shapes_arrowLength_2D = 8;
+export const default_compass_display = false;
+export const default_compass_axisXColor_3D = '#FF0000';
+export const default_compass_axisYColor_3D = '#00FF00';
+export const default_compass_axisZColor_3D = '#0000FF';
+export const default_compass_size_3D = 50;
+export const default_compass_resolution_3D = 10;
+export const default_compass_displayText_3D = true;
+export const default_compass_type_3D = 0;
+export const default_measurement_update_3D = false;
+export const default_measurement_angleBands_3D = 10;
+export const default_measurement_displayText_3D = true;
