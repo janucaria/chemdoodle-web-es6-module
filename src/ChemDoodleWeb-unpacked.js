@@ -5944,39 +5944,6 @@ ChemDoodle.featureDetection = featureDetection;
 		this.value = this.molecule.bonds.length - this.molecule.atoms.length + new informatics.NumberOfMoleculesCounter(this.molecule).value;
 	};
 })(ChemDoodle.informatics);
-(function(structures, informatics, undefined) {
-	'use strict';
-	informatics.NumberOfMoleculesCounter = function(molecule) {
-		this.setMolecule(molecule);
-	};
-	var _ = informatics.NumberOfMoleculesCounter.prototype = new informatics._Counter();
-	_.innerCalculate = function() {
-		for ( var i = 0, ii = this.molecule.atoms.length; i < ii; i++) {
-			this.molecule.atoms[i].visited = false;
-		}
-		for ( var i = 0, ii = this.molecule.atoms.length; i < ii; i++) {
-			if (!this.molecule.atoms[i].visited) {
-				this.value++;
-				var q = new structures.Queue();
-				this.molecule.atoms[i].visited = true;
-				q.enqueue(this.molecule.atoms[i]);
-				while (!q.isEmpty()) {
-					var atom = q.dequeue();
-					for ( var j = 0, jj = this.molecule.bonds.length; j < jj; j++) {
-						var b = this.molecule.bonds[j];
-						if (b.contains(atom)) {
-							var neigh = b.getNeighbor(atom);
-							if (!neigh.visited) {
-								neigh.visited = true;
-								q.enqueue(neigh);
-							}
-						}
-					}
-				}
-			}
-		}
-	};
-})(ChemDoodle.structures, ChemDoodle.informatics);
 
 (function(informatics, undefined) {
 	'use strict';
