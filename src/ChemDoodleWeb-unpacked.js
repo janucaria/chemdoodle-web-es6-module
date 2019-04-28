@@ -5936,17 +5936,6 @@ ChemDoodle.featureDetection = featureDetection;
 
 (function(informatics, undefined) {
 	'use strict';
-	informatics.FrerejacqueNumberCounter = function(molecule) {
-		this.setMolecule(molecule);
-	};
-	var _ = informatics.FrerejacqueNumberCounter.prototype = new informatics._Counter();
-	_.innerCalculate = function() {
-		this.value = this.molecule.bonds.length - this.molecule.atoms.length + new informatics.NumberOfMoleculesCounter(this.molecule).value;
-	};
-})(ChemDoodle.informatics);
-
-(function(informatics, undefined) {
-	'use strict';
 	informatics._RingFinder = function() {
 	};
 	var _ = informatics._RingFinder.prototype;
