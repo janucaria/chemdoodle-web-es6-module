@@ -1,4 +1,11 @@
 import JSONInterpreter from './io/JSONInterpreter';
+
+export { default as _Canvas } from './_Canvas';
+export { default as _AnimatorCanvas } from './_AnimatorCanvas';
+export { default as RotatorCanvas } from './RotatorCanvas';
+export { default as _Canvas3D } from './_Canvas3D';
+export { default as MovieCanvas3D } from './MovieCanvas3D';
+
 const m = Math;
 
 const VERSION = '8.0.0';
