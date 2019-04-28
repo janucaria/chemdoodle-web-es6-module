@@ -5812,33 +5812,6 @@ ChemDoodle.featureDetection = featureDetection;
 
 })(ChemDoodle.structures, ChemDoodle.structures.d3, ChemDoodle.ELEMENT, Math);
 
-(function(c, ELEMENT, informatics, structures, undefined) {
-	'use strict';
-	informatics.getPointsPerAngstrom = function() {
-		return c.default_bondLength_2D / c.default_angstromsPerBondLength;
-	};
-
-	informatics.BondDeducer = function() {
-	};
-	var _ = informatics.BondDeducer.prototype;
-	_.margin = 1.1;
-	_.deduceCovalentBonds = function(molecule, customPointsPerAngstrom) {
-		var pointsPerAngstrom = informatics.getPointsPerAngstrom();
-		if (customPointsPerAngstrom) {
-			pointsPerAngstrom = customPointsPerAngstrom;
-		}
-		for ( var i = 0, ii = molecule.atoms.length; i < ii; i++) {
-			for ( var j = i + 1; j < ii; j++) {
-				var first = molecule.atoms[i];
-				var second = molecule.atoms[j];
-				if (first.distance3D(second) < (ELEMENT[first.label].covalentRadius + ELEMENT[second.label].covalentRadius) * pointsPerAngstrom * this.margin) {
-					molecule.bonds.push(new structures.Bond(first, second, 1));
-				}
-			}
-		}
-	};
-
-})(ChemDoodle, ChemDoodle.ELEMENT, ChemDoodle.informatics, ChemDoodle.structures);
 (function(informatics, structures, undefined) {
 	'use strict';
 	informatics.HydrogenDeducer = function() {
