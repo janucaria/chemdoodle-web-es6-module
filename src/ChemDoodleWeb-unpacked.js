@@ -5043,50 +5043,6 @@ ChemDoodle.featureDetection = featureDetection;
 
 })(ChemDoodle.structures, ChemDoodle.structures.d3, ChemDoodle.ELEMENT, Math);
 
-(function(informatics, structures, undefined) {
-	'use strict';
-	informatics.Splitter = function() {
-	};
-	var _ = informatics.Splitter.prototype;
-	_.split = function(molecule) {
-		var mols = [];
-		for ( var i = 0, ii = molecule.atoms.length; i < ii; i++) {
-			molecule.atoms[i].visited = false;
-		}
-		for ( var i = 0, ii = molecule.bonds.length; i < ii; i++) {
-			molecule.bonds[i].visited = false;
-		}
-		for ( var i = 0, ii = molecule.atoms.length; i < ii; i++) {
-			var a = molecule.atoms[i];
-			if (!a.visited) {
-				var newMol = new structures.Molecule();
-				newMol.atoms.push(a);
-				a.visited = true;
-				var q = new structures.Queue();
-				q.enqueue(a);
-				while (!q.isEmpty()) {
-					var atom = q.dequeue();
-					for ( var j = 0, jj = molecule.bonds.length; j < jj; j++) {
-						var b = molecule.bonds[j];
-						if (b.contains(atom) && !b.visited) {
-							b.visited = true;
-							newMol.bonds.push(b);
-							var neigh = b.getNeighbor(atom);
-							if (!neigh.visited) {
-								neigh.visited = true;
-								newMol.atoms.push(neigh);
-								q.enqueue(neigh);
-							}
-						}
-					}
-				}
-				mols.push(newMol);
-			}
-		}
-		return mols;
-	};
-
-})(ChemDoodle.informatics, ChemDoodle.structures);
 (function(informatics, io, structures, undefined) {
 	'use strict';
 	informatics.StructureBuilder = function() {
