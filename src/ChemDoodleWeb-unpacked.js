@@ -31,6 +31,7 @@ import * as math from './ChemDoodle/math';
 import * as informatics from './ChemDoodle/informatics';
 import animations from './ChemDoodle/animations';
 import featureDetection from './ChemDoodle/featureDetection';
+import monitor from './ChemDoodle/monitor';
 import * as ChemDoodleWeb from './ChemDoodle';
 
 export var ChemDoodle = ChemDoodleWeb;
@@ -2141,85 +2142,7 @@ ChemDoodle.featureDetection = featureDetection;
 
 })(ChemDoodle, ChemDoodle.ELEMENT, ChemDoodle.SYMBOLS, ChemDoodle.io, ChemDoodle.structures, ChemDoodle.lib.jQuery.trim);
 
-ChemDoodle.monitor = (function(featureDetection, q, document, undefined) {
-	'use strict';
-	var m = {};
-
-	m.CANVAS_DRAGGING = undefined;
-	m.CANVAS_OVER = undefined;
-	m.ALT = false;
-	m.SHIFT = false;
-	m.META = false;
-
-	if (!featureDetection.supports_touch()) {
-		q(document).ready(function() {
-			// handles dragging beyond the canvas bounds
-			q(document).mousemove(function(e) {
-				if (m.CANVAS_DRAGGING) {
-					if (m.CANVAS_DRAGGING.drag) {
-						m.CANVAS_DRAGGING.prehandleEvent(e);
-						m.CANVAS_DRAGGING.drag(e);
-					}
-				}
-			});
-			q(document).mouseup(function(e) {
-				if (m.CANVAS_DRAGGING && m.CANVAS_DRAGGING !== m.CANVAS_OVER) {
-					if (m.CANVAS_DRAGGING.mouseup) {
-						m.CANVAS_DRAGGING.prehandleEvent(e);
-						m.CANVAS_DRAGGING.mouseup(e);
-					}
-				}
-				m.CANVAS_DRAGGING = undefined;
-			});
-			// handles modifier keys from a single keyboard
-			q(document).keydown(function(e) {
-				m.SHIFT = e.shiftKey;
-				m.ALT = e.altKey;
-				m.META = e.metaKey || e.ctrlKey;
-				var affecting = m.CANVAS_OVER;
-				if (m.CANVAS_DRAGGING) {
-					affecting = m.CANVAS_DRAGGING;
-				}
-				if (affecting) {
-					if (affecting.keydown) {
-						affecting.prehandleEvent(e);
-						affecting.keydown(e);
-					}
-				}
-			});
-			q(document).keypress(function(e) {
-				var affecting = m.CANVAS_OVER;
-				if (m.CANVAS_DRAGGING) {
-					affecting = m.CANVAS_DRAGGING;
-				}
-				if (affecting) {
-					if (affecting.keypress) {
-						affecting.prehandleEvent(e);
-						affecting.keypress(e);
-					}
-				}
-			});
-			q(document).keyup(function(e) {
-				m.SHIFT = e.shiftKey;
-				m.ALT = e.altKey;
-				m.META = e.metaKey || e.ctrlKey;
-				var affecting = m.CANVAS_OVER;
-				if (m.CANVAS_DRAGGING) {
-					affecting = m.CANVAS_DRAGGING;
-				}
-				if (affecting) {
-					if (affecting.keyup) {
-						affecting.prehandleEvent(e);
-						affecting.keyup(e);
-					}
-				}
-			});
-		});
-	}
-
-	return m;
-
-})(ChemDoodle.featureDetection, ChemDoodle.lib.jQuery, document);
+ChemDoodle.monitor = monitor;
 
 (function(c, featureDetection, math, monitor, structures, q, m, document, window, userAgent, undefined) {
 	'use strict';
