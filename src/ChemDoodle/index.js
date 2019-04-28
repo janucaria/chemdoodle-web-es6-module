@@ -2,6 +2,7 @@ import JSONInterpreter from './io/JSONInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
+export { default as HyperlinkCanvas } from './HyperlinkCanvas';
 export { default as _AnimatorCanvas } from './_AnimatorCanvas';
 export { default as RotatorCanvas } from './RotatorCanvas';
 export { default as _Canvas3D } from './_Canvas3D';
