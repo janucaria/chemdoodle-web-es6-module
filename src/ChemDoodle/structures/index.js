@@ -9,3 +9,4 @@ export { default as Molecule } from './Molecule';
 export { default as Spectrum } from './Spectrum';
 export { default as Plate } from './Plate';
 export { default as VisualSpecifications } from './VisualSpecifications';
+export { d2 } from './d2';
