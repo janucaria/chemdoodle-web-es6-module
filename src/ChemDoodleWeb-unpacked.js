@@ -28,6 +28,7 @@ import * as lib from './ChemDoodle/lib';
 import * as extensions from './ChemDoodle/extensions';
 import * as structures from './ChemDoodle/structures';
 import * as math from './ChemDoodle/math';
+import * as informatics from './ChemDoodle/informatics';
 import animations from './ChemDoodle/animations';
 import featureDetection from './ChemDoodle/featureDetection';
 import * as ChemDoodleWeb from './ChemDoodle';
@@ -35,7 +36,9 @@ import * as ChemDoodleWeb from './ChemDoodle';
 export var ChemDoodle = ChemDoodleWeb;
 
 ChemDoodle.iChemLabs = {};
-ChemDoodle.informatics = {};
+
+ChemDoodle.informatics = informatics;
+
 ChemDoodle.io = {};
 ChemDoodle.lib = lib;
 ChemDoodle.notations = {};
@@ -5930,21 +5933,7 @@ ChemDoodle.featureDetection = featureDetection;
 	};
 
 })(ChemDoodle.informatics, ChemDoodle.io, ChemDoodle.structures);
-(function(informatics, undefined) {
-	'use strict';
-	informatics._Counter = function() {
-	};
-	var _ = informatics._Counter.prototype;
-	_.value = 0;
-	_.molecule = undefined;
-	_.setMolecule = function(molecule) {
-		this.value = 0;
-		this.molecule = molecule;
-		if (this.innerCalculate) {
-			this.innerCalculate();
-		}
-	};
-})(ChemDoodle.informatics);
+
 (function(informatics, undefined) {
 	'use strict';
 	informatics.FrerejacqueNumberCounter = function(molecule) {
