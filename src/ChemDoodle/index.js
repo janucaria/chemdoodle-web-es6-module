@@ -1,3 +1,4 @@
+import JSONInterpreter from './io/JSONInterpreter';
 const m = Math;
 
 const VERSION = '8.0.0';
@@ -404,3 +405,35 @@ export const default_compass_type_3D = 0;
 export const default_measurement_update_3D = false;
 export const default_measurement_angleBands_3D = 10;
 export const default_measurement_displayText_3D = true;
+
+// shortcuts
+var interpreter = new JSONInterpreter();
+export function readJSON(string) {
+  var obj;
+  try {
+    obj = JSON.parse(string);
+  } catch (e) {
+    // not json
+    return undefined;
+  }
+  if (obj) {
+    if (obj.m || obj.s) {
+      return interpreter.contentFrom(obj);
+    } else if (obj.a) {
+      return obj = {
+        molecules : [ interpreter.molFrom(obj) ],
+        shapes : []
+      };
+    } else {
+      return obj = {
+        molecules : [],
+        shapes : []
+      };
+    }
+  }
+  return undefined;
+};
+
+export function writeJSON(mols, shapes) {
+  return JSON.stringify(interpreter.contentTo(mols, shapes));
+};
