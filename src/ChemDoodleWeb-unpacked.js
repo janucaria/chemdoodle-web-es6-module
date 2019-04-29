@@ -57,18 +57,6 @@ ChemDoodle.math = math;
 
 ChemDoodle.featureDetection = featureDetection;
 
-(function(informatics, io, structures, undefined) {
-	'use strict';
-	informatics.StructureBuilder = function() {
-	};
-	var _ = informatics.StructureBuilder.prototype;
-	_.copy = function(molecule) {
-		var json = new io.JSONInterpreter();
-		return json.molFrom(json.molTo(molecule));
-	};
-
-})(ChemDoodle.informatics, ChemDoodle.io, ChemDoodle.structures);
-
 (function(io, undefined) {
 	'use strict';
 	io._Interpreter = function() {
