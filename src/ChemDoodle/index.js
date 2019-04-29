@@ -1,4 +1,11 @@
+import CIFInterpreter from './io/CIFInterpreter';
 import JSONInterpreter from './io/JSONInterpreter';
+import CMLInterpreter from './io/CMLInterpreter';
+import MOLInterpreter from './io/MOLInterpreter';
+import PDBInterpreter from './io/PDBInterpreter';
+import JCAMPInterpreter from './io/JCAMPInterpreter';
+import RXNInterpreter from './io/RXNInterpreter';
+import XYZInterpreter from './io/XYZInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -429,34 +436,107 @@ export const default_measurement_update_3D = false;
 export const default_measurement_angleBands_3D = 10;
 export const default_measurement_displayText_3D = true;
 
-// shortcuts
-var interpreter = new JSONInterpreter();
-export function readJSON(string) {
-  var obj;
-  try {
-    obj = JSON.parse(string);
-  } catch (e) {
-    // not json
-    return undefined;
-  }
-  if (obj) {
-    if (obj.m || obj.s) {
-      return interpreter.contentFrom(obj);
-    } else if (obj.a) {
-      return obj = {
-        molecules : [ interpreter.molFrom(obj) ],
-        shapes : []
-      };
-    } else {
-      return obj = {
-        molecules : [],
-        shapes : []
-      };
-    }
-  }
-  return undefined;
-};
+export let { readJSON, writeJSON } = (function() {
+	// shortcuts
+	var interpreter = new JSONInterpreter();
+	return {
+		readJSON: function(string) {
+			var obj;
+			try {
+				obj = JSON.parse(string);
+			} catch (e) {
+				// not json
+				return undefined;
+			}
+			if (obj) {
+				if (obj.m || obj.s) {
+					return interpreter.contentFrom(obj);
+				} else if (obj.a) {
+					return obj = {
+						molecules : [ interpreter.molFrom(obj) ],
+						shapes : []
+					};
+				} else {
+					return obj = {
+						molecules : [],
+						shapes : []
+					};
+				}
+			}
+			return undefined;
+		},
+		writeJSON: function(mols, shapes) {
+			return JSON.stringify(interpreter.contentTo(mols, shapes));
+		}
+	};
+})();
 
-export function writeJSON(mols, shapes) {
-  return JSON.stringify(interpreter.contentTo(mols, shapes));
-};
+export let readCIF = (function() {
+	// shortcuts
+	var interpreter = new CIFInterpreter();
+	return function(content, xSuper, ySuper, zSuper) {
+		return interpreter.read(content, xSuper, ySuper, zSuper);
+	};
+})();
+
+export let [readCML, writeCML] = (() => {
+	// shortcuts
+	var interpreter = new CMLInterpreter();
+
+	return [
+		function(content) {
+			return interpreter.read(content);
+		},
+		writeCML = function(molecules) {
+			return interpreter.write(molecules);
+		}
+	];
+})();
+
+export let [readMOL, writeMOL] = (() => {
+	// shortcuts
+	var interpreter = new MOLInterpreter();
+
+	return [
+		function(content, multiplier) {
+			return interpreter.read(content, multiplier);
+		},
+		function(mol) {
+			return interpreter.write(mol);
+		}
+	];
+})();
+
+// shortcuts
+export const readPDB = ((interpreter) => {
+	return function(content, multiplier) {
+		return interpreter.read(content, multiplier);
+	};
+})(new PDBInterpreter());
+
+// shortcuts
+export const readJCAMP = ((interpreter) => {
+	interpreter.convertHZ2PPM = true;
+	return function(content) {
+		return interpreter.read(content);
+	};
+})(new JCAMPInterpreter());
+
+// shortcuts
+export const [readRXN, writeRXN] = ((interpreter) => {
+	return [
+		function(content, multiplier) {
+			return interpreter.read(content, multiplier);
+		},
+		function(mols, shapes) {
+			return interpreter.write(mols, shapes);
+		}
+	];
+})(new RXNInterpreter());
+
+// shortcuts
+export const readXYZ = ((interpreter) => {
+	return function(content) {
+		return interpreter.read(content);
+	};
+})(new XYZInterpreter());
