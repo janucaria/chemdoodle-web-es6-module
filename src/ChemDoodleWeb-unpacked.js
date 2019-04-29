@@ -1541,16 +1541,6 @@ ChemDoodle.featureDetection = featureDetection;
 ChemDoodle.monitor = monitor;
 (function(c, undefined) {
 	'use strict';
-	c.TransformCanvas3D = function(id, width, height) {
-		if (id) {
-			this.create(id, width, height);
-		}
-	};
-	c.TransformCanvas3D.prototype = new c._Canvas3D();
-
-})(ChemDoodle);
-(function(c, undefined) {
-	'use strict';
 	c.ViewerCanvas3D = function(id, width, height) {
 		if (id) {
 			this.create(id, width, height);
