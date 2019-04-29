@@ -5,6 +5,7 @@ import MOLInterpreter from './io/MOLInterpreter';
 import PDBInterpreter from './io/PDBInterpreter';
 import JCAMPInterpreter from './io/JCAMPInterpreter';
 import RXNInterpreter from './io/RXNInterpreter';
+import XYZInterpreter from './io/XYZInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -532,3 +533,10 @@ export const [readRXN, writeRXN] = ((interpreter) => {
 		}
 	];
 })(new RXNInterpreter());
+
+// shortcuts
+export const readXYZ = ((interpreter) => {
+	return function(content) {
+		return interpreter.read(content);
+	};
+})(new XYZInterpreter());

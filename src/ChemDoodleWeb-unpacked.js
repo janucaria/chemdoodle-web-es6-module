@@ -57,40 +57,6 @@ ChemDoodle.math = math;
 
 ChemDoodle.featureDetection = featureDetection;
 
-(function(c, ELEMENT, SYMBOLS, io, structures, trim, undefined) {
-	'use strict';
-	io.XYZInterpreter = function() {
-	};
-	var _ = io.XYZInterpreter.prototype = new io._Interpreter();
-	_.deduceCovalentBonds = true;
-	_.read = function(content) {
-		var molecule = new structures.Molecule();
-		if (!content) {
-			return molecule;
-		}
-		var lines = content.split('\n');
-
-		var numAtoms = parseInt(trim(lines[0]));
-
-		for ( var i = 0; i < numAtoms; i++) {
-			var line = lines[i + 2];
-			var tokens = line.split(/\s+/g);
-			molecule.atoms[i] = new structures.Atom(isNaN(tokens[0]) ? tokens[0] : SYMBOLS[parseInt(tokens[0]) - 1], parseFloat(tokens[1]), parseFloat(tokens[2]), parseFloat(tokens[3]));
-		}
-		if (this.deduceCovalentBonds) {
-			new c.informatics.BondDeducer().deduceCovalentBonds(molecule, 1);
-		}
-		return molecule;
-	};
-
-	// shortcuts
-	var interpreter = new io.XYZInterpreter();
-	c.readXYZ = function(content) {
-		return interpreter.read(content);
-	};
-
-})(ChemDoodle, ChemDoodle.ELEMENT, ChemDoodle.SYMBOLS, ChemDoodle.io, ChemDoodle.structures, ChemDoodle.lib.jQuery.trim);
-
 ChemDoodle.monitor = monitor;
 
 (function(io, document, window, undefined) {
