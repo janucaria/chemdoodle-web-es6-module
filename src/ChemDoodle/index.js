@@ -3,6 +3,7 @@ import JSONInterpreter from './io/JSONInterpreter';
 import CMLInterpreter from './io/CMLInterpreter';
 import MOLInterpreter from './io/MOLInterpreter';
 import PDBInterpreter from './io/PDBInterpreter';
+import JCAMPInterpreter from './io/JCAMPInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -504,8 +505,17 @@ export let [readMOL, writeMOL] = (() => {
 	];
 })();
 
+// shortcuts
 export const readPDB = ((interpreter) => {
 	return function(content, multiplier) {
 		return interpreter.read(content, multiplier);
 	};
 })(new PDBInterpreter());
+
+// shortcuts
+export const readJCAMP = ((interpreter) => {
+	interpreter.convertHZ2PPM = true;
+	return function(content) {
+		return interpreter.read(content);
+	};
+})(new JCAMPInterpreter());
