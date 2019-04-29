@@ -1,3 +1,4 @@
+import CIFInterpreter from './io/CIFInterpreter';
 import JSONInterpreter from './io/JSONInterpreter';
 
 export { default as _Canvas } from './_Canvas';
@@ -429,34 +430,45 @@ export const default_measurement_update_3D = false;
 export const default_measurement_angleBands_3D = 10;
 export const default_measurement_displayText_3D = true;
 
-// shortcuts
-var interpreter = new JSONInterpreter();
-export function readJSON(string) {
-  var obj;
-  try {
-    obj = JSON.parse(string);
-  } catch (e) {
-    // not json
-    return undefined;
-  }
-  if (obj) {
-    if (obj.m || obj.s) {
-      return interpreter.contentFrom(obj);
-    } else if (obj.a) {
-      return obj = {
-        molecules : [ interpreter.molFrom(obj) ],
-        shapes : []
-      };
-    } else {
-      return obj = {
-        molecules : [],
-        shapes : []
-      };
-    }
-  }
-  return undefined;
-};
+export let { readJSON, writeJSON } = (function() {
+	// shortcuts
+	var interpreter = new JSONInterpreter();
+	return {
+		readJSON: function(string) {
+			var obj;
+			try {
+				obj = JSON.parse(string);
+			} catch (e) {
+				// not json
+				return undefined;
+			}
+			if (obj) {
+				if (obj.m || obj.s) {
+					return interpreter.contentFrom(obj);
+				} else if (obj.a) {
+					return obj = {
+						molecules : [ interpreter.molFrom(obj) ],
+						shapes : []
+					};
+				} else {
+					return obj = {
+						molecules : [],
+						shapes : []
+					};
+				}
+			}
+			return undefined;
+		},
+		writeJSON: function(mols, shapes) {
+			return JSON.stringify(interpreter.contentTo(mols, shapes));
+		}
+	};
+})();
 
-export function writeJSON(mols, shapes) {
-  return JSON.stringify(interpreter.contentTo(mols, shapes));
-};
+export let readCIF = (function() {
+	// shortcuts
+	var interpreter = new CIFInterpreter();
+	return function(content, xSuper, ySuper, zSuper) {
+		return interpreter.read(content, xSuper, ySuper, zSuper);
+	};
+})();
