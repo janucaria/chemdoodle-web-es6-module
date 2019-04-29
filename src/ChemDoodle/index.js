@@ -15,6 +15,7 @@ export { default as SeekerCanvas } from './SeekerCanvas';
 export { default as _AnimatorCanvas } from './_AnimatorCanvas';
 export { default as RotatorCanvas } from './RotatorCanvas';
 export { default as _Canvas3D } from './_Canvas3D';
+export { default as MolGrabberCanvas3D } from './MolGrabberCanvas3D';
 export { default as MovieCanvas3D } from './MovieCanvas3D';
 
 const m = Math;
