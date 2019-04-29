@@ -1539,48 +1539,6 @@ ChemDoodle.featureDetection = featureDetection;
 })(ChemDoodle, ChemDoodle.ELEMENT, ChemDoodle.SYMBOLS, ChemDoodle.io, ChemDoodle.structures, ChemDoodle.lib.jQuery.trim);
 
 ChemDoodle.monitor = monitor;
-
-(function(c, m, m4, undefined) {
-	'use strict';
-	// keep these declaration outside the loop to avoid overhead
-	var matrix = [];
-	var xAxis = [ 1, 0, 0 ];
-	var yAxis = [ 0, 1, 0 ];
-	var zAxis = [ 0, 0, 1 ];
-
-	c.RotatorCanvas3D = function(id, width, height) {
-		if (id) {
-			this.create(id, width, height);
-		}
-	};
-	var _ = c.RotatorCanvas3D.prototype = new c._Canvas3D();
-	_.timeout = 33;
-	var increment = m.PI / 15;
-	_.xIncrement = increment;
-	_.yIncrement = increment;
-	_.zIncrement = increment;
-	_.startAnimation = c._AnimatorCanvas.prototype.startAnimation;
-	_.stopAnimation = c._AnimatorCanvas.prototype.stopAnimation;
-	_.isRunning = c._AnimatorCanvas.prototype.isRunning;
-	_.dblclick = c.RotatorCanvas.prototype.dblclick;
-	_.mousedown = undefined;
-	_.rightmousedown = undefined;
-	_.drag = undefined;
-	_.mousewheel = undefined;
-	_.nextFrame = function(delta) {
-		if (this.molecules.length === 0 && this.shapes.length === 0) {
-			this.stopAnimation();
-			return;
-		}
-		m4.identity(matrix);
-		var change = delta / 1000;
-		m4.rotate(matrix, this.xIncrement * change, xAxis);
-		m4.rotate(matrix, this.yIncrement * change, yAxis);
-		m4.rotate(matrix, this.zIncrement * change, zAxis);
-		m4.multiply(this.rotationMatrix, matrix);
-	};
-
-})(ChemDoodle, Math, ChemDoodle.lib.mat4);
 (function(c, undefined) {
 	'use strict';
 	c.TransformCanvas3D = function(id, width, height) {
