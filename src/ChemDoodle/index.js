@@ -3,6 +3,7 @@ import JSONInterpreter from './io/JSONInterpreter';
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
 export { default as HyperlinkCanvas } from './HyperlinkCanvas';
+export { default as PeriodicTableCanvas } from './PeriodicTableCanvas';
 export { default as MolGrabberCanvas } from './MolGrabberCanvas';
 export { default as SlideshowCanvas } from './SlideshowCanvas';
 export { default as TransformCanvas } from './TransformCanvas';
