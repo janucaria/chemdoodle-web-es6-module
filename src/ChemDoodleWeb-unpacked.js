@@ -1540,17 +1540,6 @@ ChemDoodle.featureDetection = featureDetection;
 
 ChemDoodle.monitor = monitor;
 
-(function(c, undefined) {
-	'use strict';
-	c.ViewerCanvas = function(id, width, height) {
-		if (id) {
-			this.create(id, width, height);
-		}
-	};
-	c.ViewerCanvas.prototype = new c._Canvas();
-
-})(ChemDoodle);
-
 (function(c, document, undefined) {
 	'use strict';
 	c._SpectrumCanvas = function(id, width, height) {
