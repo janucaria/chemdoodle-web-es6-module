@@ -1,5 +1,6 @@
 import CIFInterpreter from './io/CIFInterpreter';
 import JSONInterpreter from './io/JSONInterpreter';
+import CMLInterpreter from './io/CMLInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -471,4 +472,18 @@ export let readCIF = (function() {
 	return function(content, xSuper, ySuper, zSuper) {
 		return interpreter.read(content, xSuper, ySuper, zSuper);
 	};
+})();
+
+export let [readCML, writeCML] = (() => {
+	// shortcuts
+	var interpreter = new CMLInterpreter();
+
+	return [
+		function(content) {
+			return interpreter.read(content);
+		},
+		writeCML = function(molecules) {
+			return interpreter.write(molecules);
+		}
+	];
 })();
