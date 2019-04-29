@@ -57,22 +57,6 @@ ChemDoodle.math = math;
 
 ChemDoodle.featureDetection = featureDetection;
 
-(function(io, undefined) {
-	'use strict';
-	io._Interpreter = function() {
-	};
-	var _ = io._Interpreter.prototype;
-	_.fit = function(data, length, leftAlign) {
-		var size = data.length;
-		var padding = [];
-		for ( var i = 0; i < length - size; i++) {
-			padding.push(' ');
-		}
-		return leftAlign ? data + padding.join('') : padding.join('') + data;
-	};
-
-})(ChemDoodle.io);
-
 (function(c, extensions, io, structures, d3, m, m4, v3, undefined) {
 	'use strict';
 	var whitespaceRegex = /\s+/g;
