@@ -4,6 +4,7 @@ import CMLInterpreter from './io/CMLInterpreter';
 import MOLInterpreter from './io/MOLInterpreter';
 import PDBInterpreter from './io/PDBInterpreter';
 import JCAMPInterpreter from './io/JCAMPInterpreter';
+import RXNInterpreter from './io/RXNInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -519,3 +520,15 @@ export const readJCAMP = ((interpreter) => {
 		return interpreter.read(content);
 	};
 })(new JCAMPInterpreter());
+
+// shortcuts
+export const [readRXN, writeRXN] = ((interpreter) => {
+	return [
+		function(content, multiplier) {
+			return interpreter.read(content, multiplier);
+		},
+		function(mols, shapes) {
+			return interpreter.write(mols, shapes);
+		}
+	];
+})(new RXNInterpreter());

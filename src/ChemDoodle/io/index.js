@@ -5,3 +5,4 @@ export { default as CMLInterpreter } from './CMLInterpreter';
 export { default as MOLInterpreter } from './MOLInterpreter';
 export { default as PDBInterpreter } from './PDBInterpreter';
 export { default as JCAMPInterpreter } from './JCAMPInterpreter';
+export { default as RXNInterpreter } from './RXNInterpreter';
