@@ -45,6 +45,7 @@ ChemDoodle.informatics = informatics;
 ChemDoodle.io = io;
 
 ChemDoodle.lib = lib;
+
 ChemDoodle.notations = {};
 
 ChemDoodle.structures = structures;
@@ -58,34 +59,3 @@ ChemDoodle.math = math;
 ChemDoodle.featureDetection = featureDetection;
 
 ChemDoodle.monitor = monitor;
-
-(function(io, document, window, undefined) {
-	'use strict';
-	io.png = {};
-
-	io.png.string = function(canvas) {
-		// this will not work for WebGL canvases in some browsers
-		// to fix that you need to set the "preserveDrawingBuffer" to true when
-		// creating the WebGL context
-		// note that this will cause performance issues on some platforms and is
-		// therefore not done by default
-		return document.getElementById(canvas.id).toDataURL('image/png');
-	};
-
-	io.png.open = function(canvas) {
-		window.open(this.string(canvas));
-	};
-
-})(ChemDoodle.io, document, window);
-
-(function(io, q, undefined) {
-	'use strict';
-	io.file = {};
-
-	// this function will only work with files from the same origin it is being
-	// called from, unless the receiving server supports XHR2
-	io.file.content = function(url, callback) {
-		q.get(url, '', callback);
-	};
-
-})(ChemDoodle.io, ChemDoodle.lib.jQuery);
