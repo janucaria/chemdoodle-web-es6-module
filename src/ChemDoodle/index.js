@@ -1,6 +1,7 @@
 import CIFInterpreter from './io/CIFInterpreter';
 import JSONInterpreter from './io/JSONInterpreter';
 import CMLInterpreter from './io/CMLInterpreter';
+import MOLInterpreter from './io/MOLInterpreter';
 
 export { default as _Canvas } from './_Canvas';
 export { default as FileCanvas } from './FileCanvas';
@@ -484,6 +485,20 @@ export let [readCML, writeCML] = (() => {
 		},
 		writeCML = function(molecules) {
 			return interpreter.write(molecules);
+		}
+	];
+})();
+
+export let [readMOL, writeMOL] = (() => {
+	// shortcuts
+	var interpreter = new MOLInterpreter();
+
+	return [
+		function(content, multiplier) {
+			return interpreter.read(content, multiplier);
+		},
+		function(mol) {
+			return interpreter.write(mol);
 		}
 	];
 })();
