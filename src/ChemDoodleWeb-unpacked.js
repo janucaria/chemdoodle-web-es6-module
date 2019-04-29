@@ -1542,17 +1542,6 @@ ChemDoodle.monitor = monitor;
 
 (function(c, undefined) {
 	'use strict';
-	c.ObserverCanvas = function(id, width, height) {
-		if (id) {
-			this.create(id, width, height);
-		}
-	};
-	c.ObserverCanvas.prototype = new c._SpectrumCanvas();
-
-})(ChemDoodle);
-
-(function(c, undefined) {
-	'use strict';
 	c.OverlayCanvas = function(id, width, height) {
 		if (id) {
 			this.create(id, width, height);

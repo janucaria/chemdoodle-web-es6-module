@@ -8,6 +8,7 @@ export { default as SlideshowCanvas } from './SlideshowCanvas';
 export { default as TransformCanvas } from './TransformCanvas';
 export { default as ViewerCanvas } from './ViewerCanvas';
 export { default as _SpectrumCanvas } from './_SpectrumCanvas';
+export { default as ObserverCanvas } from './ObserverCanvas';
 export { default as _AnimatorCanvas } from './_AnimatorCanvas';
 export { default as RotatorCanvas } from './RotatorCanvas';
 export { default as _Canvas3D } from './_Canvas3D';
