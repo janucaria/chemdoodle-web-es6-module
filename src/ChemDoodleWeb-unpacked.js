@@ -1539,20 +1539,6 @@ ChemDoodle.featureDetection = featureDetection;
 })(ChemDoodle, ChemDoodle.ELEMENT, ChemDoodle.SYMBOLS, ChemDoodle.io, ChemDoodle.structures, ChemDoodle.lib.jQuery.trim);
 
 ChemDoodle.monitor = monitor;
-(function(c, undefined) {
-	'use strict';
-	c.ViewerCanvas3D = function(id, width, height) {
-		if (id) {
-			this.create(id, width, height);
-		}
-	};
-	var _ = c.ViewerCanvas3D.prototype = new c._Canvas3D();
-	_.mousedown = undefined;
-	_.rightmousedown = undefined;
-	_.drag = undefined;
-	_.mousewheel = undefined;
-
-})(ChemDoodle);
 
 (function(c, extensions, math, document, undefined) {
 	'use strict';
