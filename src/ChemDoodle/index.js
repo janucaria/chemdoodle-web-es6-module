@@ -1,4 +1,27 @@
 import JSONInterpreter from './io/JSONInterpreter';
+
+export { default as _Canvas } from './_Canvas';
+export { default as FileCanvas } from './FileCanvas';
+export { default as HyperlinkCanvas } from './HyperlinkCanvas';
+export { default as PeriodicTableCanvas } from './PeriodicTableCanvas';
+export { default as MolGrabberCanvas } from './MolGrabberCanvas';
+export { default as SlideshowCanvas } from './SlideshowCanvas';
+export { default as TransformCanvas } from './TransformCanvas';
+export { default as ViewerCanvas } from './ViewerCanvas';
+export { default as _SpectrumCanvas } from './_SpectrumCanvas';
+export { default as ObserverCanvas } from './ObserverCanvas';
+export { default as OverlayCanvas } from './OverlayCanvas';
+export { default as PerspectiveCanvas } from './PerspectiveCanvas';
+export { default as SeekerCanvas } from './SeekerCanvas';
+export { default as _AnimatorCanvas } from './_AnimatorCanvas';
+export { default as RotatorCanvas } from './RotatorCanvas';
+export { default as _Canvas3D } from './_Canvas3D';
+export { default as MolGrabberCanvas3D } from './MolGrabberCanvas3D';
+export { default as RotatorCanvas3D } from './RotatorCanvas3D';
+export { default as TransformCanvas3D } from './TransformCanvas3D';
+export { default as ViewerCanvas3D } from './ViewerCanvas3D';
+export { default as MovieCanvas3D } from './MovieCanvas3D';
+
 const m = Math;
 
 const VERSION = '8.0.0';
